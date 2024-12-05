@@ -7,6 +7,7 @@ const helmet = require("helmet");
 const userRoutes = require("./routes/userRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const leadRoutes = require("./routes/leadRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
 
 const errorHandler = require("./middleware/errorHandler");
 connectDb();
@@ -22,6 +23,7 @@ app.use(
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/contacts", contactRoutes);
 app.use("/api/v1/leads", leadRoutes);
+app.use("/api/v1/notifications", notificationRoutes);
 app.use(errorHandler);
 process.on("uncaughtException", (err) => {
   console.log("uncaught Exception");
