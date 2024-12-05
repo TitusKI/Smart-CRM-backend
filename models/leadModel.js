@@ -18,6 +18,10 @@ const leadSchema = new mongoose.Schema(
     rejectionNotes: {
       type: String,
     },
+    notificationSent: {
+      type: Boolean,
+      default: false,
+    },
     user_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

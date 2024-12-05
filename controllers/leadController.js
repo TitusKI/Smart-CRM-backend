@@ -1,5 +1,6 @@
 const Lead = require("../models/leadModel");
 const asyncHandler = require("express-async-handler");
+const Notification = require("../models/notificationModel");
 
 // Retrieve all leads (Filter by status)
 exports.getAllLeads = asyncHandler(async (req, res) => {
@@ -117,7 +118,7 @@ exports.deleteLead = asyncHandler(async (req, res) => {
   res.status(204).json({ status: "success", data: null });
 });
 
-// Approve a lead
+// approved lead
 exports.approveLead = asyncHandler(async (req, res) => {
   const lead = await Lead.findById(req.params.id);
 
@@ -127,7 +128,14 @@ exports.approveLead = asyncHandler(async (req, res) => {
   }
 
   lead.status = "Approved";
+  lead.notificationSent = true;
   await lead.save();
+
+  // Create a new notification and save to DB
+  await Notification.create({
+    user_id: lead.user_id,
+    message: `Your lead "${lead.title}" has been approved!`,
+  });
 
   res.status(200).json({
     status: "success",
@@ -147,7 +155,14 @@ exports.rejectLead = asyncHandler(async (req, res) => {
   lead.status = "Rejected";
   lead.rejectionNotes =
     req.body.rejectionNotes || "No rejection notes provided";
+  lead.notificationSent = true;
   await lead.save();
+
+  // Create a new notification and save to DB
+  await Notification.create({
+    user_id: lead.user_id,
+    message: `Your lead "${lead.title}" has been rejected. Reason: ${lead.rejectionNotes}`,
+  });
 
   res.status(200).json({
     status: "success",
