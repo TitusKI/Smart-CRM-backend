@@ -42,7 +42,7 @@ exports.createContact = asyncHandler(async (req, res) => {
       name,
       phone,
       address: req.body.address,
-      role: req.body.relationship,
+      role: req.body.role,
       user_id: req.user.id,
     });
 
