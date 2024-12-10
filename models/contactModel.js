@@ -17,7 +17,7 @@ const contactSchema = new mongoose.Schema({
   address: {
     type: String,
   },
-  relationship: {
+  role: {
     type: String,
   },
 });
