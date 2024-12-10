@@ -33,11 +33,9 @@ router
     userController.deleteUser
   );
 
-router
-  .route("/deleteMe")
-  .delete(
-    authController.verifyToken,
-    authController.restrictAccess("user"),
-    userController.deleteMyAccount
-  );
+router.route("/deleteMe").delete(
+  authController.verifyToken,
+
+  userController.deleteMyAccount
+);
 module.exports = router;
