@@ -23,19 +23,6 @@ The backend for **Smart CRM**, a comprehensive mobile app for managing customer 
   Trigger notifications for leads and reminders.  
 
 ---
-
-## 🔧 **Getting Started**  
-
-### 📁 Prerequisites  
-- Node.js >= 21.7.1 
-- MongoDB >= 8.0  
-
-### 📲 Installation  
-
-1. **Clone the repository**:  
-   ```bash
-   git clone https://github.com/TitusKI/smart_crm_backend.git
-   cd smart_crm_backend
 Install dependencies:
 
 npm install
@@ -111,3 +98,17 @@ git pull
 📞 Phone: +251-921889274
 
 🌟 Support the Project: If you find this backend helpful, star the repository and join us in building smarter CRM solutions! 🚀
+
+## 🔧 **Getting Started**  
+
+### 📁 Prerequisites  
+- Node.js >= 21.7.1 
+- MongoDB >= 8.0  
+
+### 📲 Installation  
+
+1. **Clone the repository**:  
+   ```bash
+   git clone https://github.com/TitusKI/smart_crm_backend.git
+   cd smart_crm_backend
+
