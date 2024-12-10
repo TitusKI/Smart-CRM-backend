@@ -2,7 +2,11 @@ const asyncHandler = require("express-async-handler");
 const Contact = require("../models/contactModel");
 
 exports.getAllContacts = asyncHandler(async (req, res) => {
-  const contacts = await Contact.find({ user_id: req.user.id });
+  let contacts;
+  if (req.user.role === "admin") contacts = await Contact.find({});
+  else {
+    contacts = await Contact.find({ user_id: req.user.id });
+  }
 
   res.status(200).json({
     status: "success",
@@ -38,7 +42,7 @@ exports.createContact = asyncHandler(async (req, res) => {
       name,
       phone,
       address: req.body.address,
-      relationship: req.body.relationship,
+      role: req.body.relationship,
       user_id: req.user.id,
     });
 

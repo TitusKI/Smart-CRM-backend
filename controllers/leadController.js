@@ -50,13 +50,6 @@ exports.createLead = asyncHandler(async (req, res) => {
   }
 
   console.log("starting to create a lead");
-  const leadCount = await Lead.countDocuments({ user_id: req.user.id });
-  if (leadCount >= 3) {
-    res.status(403).json({
-      status: "Error",
-      message: "You can only create up to 3 leads",
-    });
-  }
 
   try {
     const lead = await Lead.create({
