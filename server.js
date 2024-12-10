@@ -1,5 +1,6 @@
 const express = require("express");
 const connectDb = require("./config/dbConnection");
+// const admin = require(".//config/firebase");
 const dotenv = require("dotenv").config();
 
 const helmet = require("helmet");
@@ -13,6 +14,7 @@ const errorHandler = require("./middleware/errorHandler");
 connectDb();
 
 const app = express();
+
 app.use(helmet());
 
 app.use(
